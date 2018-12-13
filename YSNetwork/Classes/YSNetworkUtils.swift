@@ -23,6 +23,27 @@ class YSNetworkUtils: NSObject {
     class func applicationCacheDirectory() -> String {
         return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last! as String
     }
+    
+    class func createFolderIfNeed(path: String){
+        let fileManager = FileManager.default
+        var isDir: ObjCBool = false
+        if !fileManager.fileExists(atPath: path, isDirectory: &isDir) {
+            self.createDirectoryAtPath(path: path)
+        } else {
+            if !isDir.boolValue {
+                try? fileManager.removeItem(atPath: path)
+                self.createDirectoryAtPath(path: path)
+            }
+        }
+    }
+    
+    class func createDirectoryAtPath(path: String){
+        do{
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            debugPrint(error)
+        }
+    }
 
     class func getMD5(string: String) -> String {
         let cStr = string.cString(using: String.Encoding.utf8);

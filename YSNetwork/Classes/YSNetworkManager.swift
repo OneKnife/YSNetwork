@@ -199,7 +199,7 @@ class YSNetworkManager: NSObject {
         }else{
             request.requestDidFail()
         }
-        dispatch_async_on_main_queue {
+        DispatchQueue.main.async {
             self.removeRequestRecord(request: request)
         }
     }
