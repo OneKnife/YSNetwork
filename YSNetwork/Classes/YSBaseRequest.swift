@@ -231,7 +231,7 @@ class YSBaseRequest: NSObject {
     
     internal func requestDidSuccess() {
         self.requestSuccessPreprocessor()
-        dispatch_async_on_main_queue {
+        DispatchQueue.main.async {
             if self.delegate != nil {
                 self.delegate?.requestSucceed(request: self)
             }
@@ -242,7 +242,7 @@ class YSBaseRequest: NSObject {
     internal func requestDidFail() {
         self.requestFailedPreprocessor()
         
-        dispatch_async_on_main_queue {
+        DispatchQueue.main.async {
             if self.delegate != nil {
                 self.delegate?.requestFailed(request: self)
             }

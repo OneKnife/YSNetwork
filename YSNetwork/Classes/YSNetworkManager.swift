@@ -161,19 +161,6 @@ class YSNetworkManager: NSObject {
         return newHeaders
     }
     
-    func logRequestDuration(path: String, duration: TimeInterval, error: Error?) {
-        debugPrint("[network]请求时间：\(duration)")
-        if duration <= 2{
-            MobClick.event("[network]connect_time_0s_2s", attributes: ["PATH": path])
-        }else if duration > 2 && duration <= 5 {
-            MobClick.event("[network]connect_time_2s_5s", attributes: ["PATH": path])
-        }else if duration > 5 && duration <= 10 {
-            MobClick.event("[network]connect_time_5s_10s", attributes: ["PATH": path])
-        }else{
-            MobClick.event("[network]connect_time_10s_", attributes: ["PATH": path])
-        }
-    }
-    
     func addRequestToRecord(request: YSBaseRequest) {
         lock.lock()
         defer { lock.unlock() }
@@ -191,7 +178,6 @@ class YSNetworkManager: NSObject {
     //MARK: - request delegate
     func handleDataRequestResult(request: YSBaseRequest, response: DataResponse<Data>) {
         debugPrint(request.afrequest)
-        self.logRequestDuration(path:response.request?.urlRequest?.url?.relativePath ?? "", duration: response.timeline.totalDuration, error: response.result.error)
         
         if response.result.error == nil {
             request.responseData = response.result.value

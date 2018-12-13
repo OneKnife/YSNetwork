@@ -196,7 +196,7 @@ class YSCacheRequest: YSBaseRequest {
 //        let currentSensitiveDataString = self.cache
         
         let appversion = self.cacheMetadata?.appVersionString
-        let currentAppVersion = YSApplicationInfo.applicationVersion()
+        let currentAppVersion = YSNetworkUtils.applicationVersion()
         if appversion != currentAppVersion {
             debugPrint("[network]: appversion mismatch")
             return false
@@ -249,7 +249,7 @@ class YSCacheRequest: YSBaseRequest {
                     metadata.version = self.cacheVersion()
 //                    metadata.sensitiveDataString = self.
                     metadata.creationDate = Date()
-                    metadata.appVersionString = YSApplicationInfo.applicationVersion()
+                    metadata.appVersionString = YSNetworkUtils.applicationVersion()
                     NSKeyedArchiver.archiveRootObject(metadata, toFile: self.cacheMetadataFilePath())
                 } catch {
                     debugPrint("[network]: \(error.localizedDescription)")
@@ -260,9 +260,9 @@ class YSCacheRequest: YSBaseRequest {
 
     /// 缓存文件基础路径
     func cacheBasePath() -> String {
-        let pathOfCache = YSFileUtilty.applicationCacheDirectory()
+        let pathOfCache = YSNetworkUtils.applicationCacheDirectory()
         let path = pathOfCache.appending("YSRequestCache")
-        YSFileUtilty.createFolderIfNeed(path: path)
+        YSNetworkUtils.createFolderIfNeed(path: path)
         return path
     }
     
@@ -272,7 +272,8 @@ class YSCacheRequest: YSBaseRequest {
         let baseUrl = self.baseUrl() ?? YSNetworkManager.shareInstance.config?.baseUrl() ?? ""
         let argument = self.requestParams()
         let requestInfo = String.init(format: "Method: %d Host: %@ Url: %@ Argument: %@", requestMethod().rawValue, baseUrl, requestUrl, argument ?? "")
-        let cacheFileName = requestInfo.md5()
+        let cacheFileName = YSNetworkUtils.getMD5(string: requestInfo)
+        
         return cacheFileName
     }
     
@@ -304,7 +305,7 @@ class YSCacheRequest: YSBaseRequest {
             return
         }
         
-        dispatch_async_on_main_queue {
+        DispatchQueue.main.async {
             self.delegate?.requestSucceed(request: self)
             self.successCallBack?(self)
             
@@ -320,7 +321,7 @@ class YSCacheRequest: YSBaseRequest {
     override func requestDidFail() {
         self.requestFailedPreprocessor()
         
-        dispatch_async_on_main_queue {
+        DispatchQueue.main.async {
             if self.delegate != nil {
                 self.delegate?.requestFailed(request: self)
             }
