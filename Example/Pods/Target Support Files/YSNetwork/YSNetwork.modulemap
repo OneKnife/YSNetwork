@@ -1,0 +1,6 @@
+framework module YSNetwork {
+  umbrella header "YSNetwork-umbrella.h"
+
+  export *
+  module * { export * }
+}
