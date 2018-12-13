@@ -1,10 +1,12 @@
 PODS:
+  - Alamofire (4.8.0)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - YSNetwork (0.1.0)
+  - YSNetwork (0.0.2):
+    - Alamofire (~> 4.7)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
@@ -12,6 +14,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - FBSnapshotTestCase
 
 EXTERNAL SOURCES:
@@ -19,8 +22,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  YSNetwork: 17cb4df595ca2953df74a48213faaaac3048d80a
+  YSNetwork: cab15738f736997c1ec258eb54af8f9dc5202563
 
 PODFILE CHECKSUM: 8a47c5d4e1e0ef1eb933169faa5afecf29d95cd8
 
