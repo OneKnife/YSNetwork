@@ -99,7 +99,7 @@ class YSNetworkManager: NSObject {
         }
     }
     
-    func addRequest(httpMethod: YSTPMethod, request: YSBaseRequest) -> Request?{
+    func addRequest(httpMethod: HTTPMethod, request: YSBaseRequest) -> Request?{
         
         guard let config = config else { debugPrint("[network]: setup with config first"); return nil }
         
@@ -138,7 +138,7 @@ class YSNetworkManager: NSObject {
     }
     
     /// build URLRequest
-    private func getURLRequest(_ url: URLConvertible, method: YSTPMethod = .get, parameters: Parameters? = nil, encoding: ParameterEncoding = Alamofire.URLEncoding.default, headers: YSTPHeaders? = nil) -> URLRequest? {
+    private func getURLRequest(_ url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, encoding: ParameterEncoding = Alamofire.URLEncoding.default, headers: HTTPHeaders? = nil) -> URLRequest? {
         var originalRequest: URLRequest?
         do {
             originalRequest = try URLRequest(url: url, method: method, headers: headers)

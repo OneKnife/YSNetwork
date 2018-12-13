@@ -83,7 +83,7 @@ class YSBaseRequest: NSObject {
 //        return requestTask?.originalRequest
 //    }
     ///  Shortcut for `requestTask.response`.
-    var response: YSTPURLResponse?{
+    var response: HTTPURLResponse?{
         return afrequest?.response
     }
     /// response status code
