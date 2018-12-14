@@ -45,7 +45,7 @@
 		9555658BAFEA5C683E56B71A /* Pods-YSNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSNetwork_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YSNetwork_Example/Pods-YSNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		96016097998E0F321990E07A /* Pods-YSNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSNetwork_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-YSNetwork_Example/Pods-YSNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9FBDC6066F359D9A16328F67 /* Pods-YSNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSNetwork_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YSNetwork_Tests/Pods-YSNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C634EFF1B3F4666CC939A12C /* YSNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YSNetwork.podspec; path = ../YSNetwork.podspec; sourceTree = "<group>"; };
+		C634EFF1B3F4666CC939A12C /* YSNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YSNetwork.podspec; path = ../YSNetwork.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E1278489A96389C867A10AB0 /* Pods_YSNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YSNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
