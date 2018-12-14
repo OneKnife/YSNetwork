@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CommonCrypto
 
 class YSNetworkUtils: NSObject {
     class func validateJSON(json: Any, jsonValidator: Any) {
